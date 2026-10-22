@@ -1,0 +1,168 @@
+{
+  "consulted": "2026-10-20",
+  "timezone": "America/Mexico_City",
+  "note": "HTTP success verifies retrieval, not every claim. Titles and source scope are reviewed in src/data/sources.ts. Full third-party pages are not redistributed.",
+  "resources": [
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co26704/rocket-locomotive",
+      "status": 200,
+      "sha256": "6f159141daa9e23b9d15c1d81ebbf38d93f6ed0693c6526b774d06e107363870",
+      "bytes": 155407,
+      "title": "Rocket locomotive | Science Museum Group Collection"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co531700/model-of-the-rocket-locomotive-drawings",
+      "status": 200,
+      "sha256": "f7e3332d0480001d3927ad32736014048919d5f8662cdb4a0e30b39214e803ce",
+      "bytes": 88883,
+      "title": "Model of the \"Rocket\" locomotive drawings | Science Museum Group Collection"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co26970/sectioned-conjectural-model-of-rocket-steam-locomotive",
+      "status": 200,
+      "sha256": "fbfcdecd614f23736119f67be16ad9500501f37925886c8ce225c3cdcad083b4",
+      "bytes": 83021,
+      "title": "Sectioned conjectural model of 'Rocket' steam locomotive | Science Museum Group Collection"
+    },
+    {
+      "url": "https://www.nps.gov/stea/learn/historyculture/index.htm",
+      "status": 200,
+      "sha256": "599b88eeb0653ce7bfb692853de5cb3fee53afeb6f0733a8667620a24304175b",
+      "bytes": 43152,
+      "title": "History & Culture - Steamtown National Historic Site (U.S. National Park Service)"
+    },
+    {
+      "url": "https://global.jr-central.co.jp/en/",
+      "status": 200,
+      "sha256": "18811d7d2e4cf9e4fc1b344f02847774d580fe2101b77aa1cf7c62be71c39de9",
+      "bytes": 9820,
+      "title": "Central Japan Railway Company"
+    },
+    {
+      "url": "https://www.alstom.com/solutions/rolling-stock",
+      "status": 200,
+      "sha256": "473986c0559b336e491f9c3e4874f27d1cc0a3d53db71f9ecd6450c04adeb835",
+      "bytes": 256619,
+      "title": "Rolling stock solutions for rail transport | Alstom"
+    },
+    {
+      "url": "https://www.up.com/about-us/history/steam/big-boy-4014",
+      "status": 200,
+      "sha256": "c48154f7097d54652c783fcaab3149f61c2ee99fb28407f5f4be1f2985e121b3",
+      "bytes": 363204,
+      "title": "Big Boy No. 4014 | Union Pacific"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co207717/english-electric-company-diesel-electric-locomotive-deltic-co-co-3300hp-1955",
+      "status": 200,
+      "sha256": "5810779b8464a2989718dd9b8de363ca9782513cf2b4cc2a5ef505a92c4b2c7a",
+      "bytes": 99498,
+      "title": "English Electric Company diesel electric locomotive 'Deltic' Co-Co 3300HP, 1955 | Science Museum Group Collection"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co207586/sectioned-deltic-diesel-engine",
+      "status": 200,
+      "sha256": "dbd4c886fa113fd2d3c7347563c8154cacc1f38b7321d523d2beb298e66ce04f",
+      "bytes": 28036,
+      "title": "Sectioned Deltic diesel engine | Science Museum Group Collection"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/documents/aa110072578/a-diagram-book-for-overseas-and-uk-locomotives-including-the-deltic-prototype",
+      "status": 200,
+      "sha256": "4b7759a50d63bd53bdbe232aaf85b7ffe94c3371d224bab752da4c27be36cfe8",
+      "bytes": 956907,
+      "title": "A diagram book for overseas and UK locomotives including the Deltic prototype | Science Museum Group Collection"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8001129/west-japan-railways-shinkansen-bullet-train-1976",
+      "status": 200,
+      "sha256": "4d2d1fafabd66090117a655c615adcb16cd5edf1686391496a52c6412908da6f",
+      "bytes": 88192,
+      "title": "West Japan Railways Shinkansen 'Bullet Train', 1976 | Science Museum Group Collection"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8405990/beyer-garratt-south-african-railways-locomotive",
+      "status": 200,
+      "sha256": "b90b446245b40ddad59fcb6ec313d3f630721025a6d1c0283ead8cf8c22014cf",
+      "bytes": 56118,
+      "title": "Beyer-Garratt South African Railways Locomotive | Science Museum Group Collection"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/documents/aa110061698/engineering-drawings-for-the-ceylon-government-railways-garratt",
+      "status": 200,
+      "sha256": "76bdf60d7277d01736953b481f43af469de9dbe510f1bb363a63cc25fb8e61fa",
+      "bytes": 19794,
+      "title": "Engineering Drawings for the Ceylon Government Railways Garratt | Science Museum Group Collection"
+    },
+    {
+      "url": "https://www.alstom.com/solutions/rolling-stock/avelia-high-speed-trains-best-way-travel-fast",
+      "status": 200,
+      "sha256": "268a78a950445e7f4d5a01b3eb2fba2ab8498e47be780edb22f763e0ea163d3a",
+      "bytes": 308929,
+      "title": "Avelia high-speed trains: The best way to travel fast | Alstom"
+    },
+    {
+      "url": "https://www.nps.gov/stea/learn/historyculture/collections.htm",
+      "status": 200,
+      "sha256": "2d7791b3e47a70b9b9e633f0997e1145879be6b719a88d17a647a12d601d49af",
+      "bytes": 39007,
+      "title": "Collections - Steamtown National Historic Site (U.S. National Park Service)"
+    },
+    {
+      "url": "https://www.alstom.com/press-releases-news/2012/7/talking-high-speed-rail-tech-with-the-father-of-frances-tgv-",
+      "status": 200,
+      "sha256": "3654c162645fe46c7d1e0cf12934092ac45eac7c0d75f0579284084761a76638",
+      "bytes": 233083,
+      "title": "Talking High-Speed Rail Tech with the Father of Frances TGV | Alstom"
+    },
+    {
+      "url": "https://collection.sciencemuseumgroup.org.uk/documents/aa110100184/drawing-of-beyer-garratt-patent-locomotive",
+      "status": 200,
+      "sha256": "a1af51bfa74964895f172e41f72f3ce5636102d630a119542b77b91c4fbe38ae",
+      "bytes": 109964,
+      "title": "Drawing of Beyer-Garratt Patent Locomotive | Science Museum Group Collection"
+    },
+    {
+      "url": "https://www.alstom.com/press-releases-news/2006/10/ALSTOM-celebrates-25-years-of-the-TGV-and-develops-the-latest-generation-of-very-high-speed-trains-20061019",
+      "status": 200,
+      "sha256": "ed308da26e35ee3e646770f0df74eec0038aec74ff95e226bf24957382c1a1d3",
+      "bytes": 236373,
+      "title": "ALSTOM celebrates 25 years of the TGV* and develops the latest generation of very high speed trains | Alstom"
+    },
+    {
+      "url": "https://www.alstom.com/press-releases-news/2006/9/TGV--25-years-of-success-to-share-ALSTOM-continues-to-innovate-20060922",
+      "status": 200,
+      "sha256": "32297acc1eda52e933790d5d0635e36c27afed167483cd08ade29885a2d9a2b2",
+      "bytes": 235939,
+      "title": "TGV : 25 years of success to share, ALSTOM continues to innovate | Alstom"
+    },
+    {
+      "url": "https://www.alstom.com/press-releases-news/2016/4/alstom-the-city-of-belfort-and-mader-team-up-to-renovate-the-tgv-001-power-car",
+      "status": 200,
+      "sha256": "d59d8af0daec26f9f0cade7913d01ec76aa2eba142080177be92c80916229016",
+      "bytes": 234349,
+      "title": "Alstom, the City of Belfort and MÄDER team up to renovate the TGV 001 power car | Alstom"
+    },
+    {
+      "url": "https://global.jr-central.co.jp/en/company/_pdf/superconducting_maglev.pdf",
+      "status": 200,
+      "sha256": "0ebb00504f836b17925bb96d5e025db49597de9175be023c32329f05f189b7ee",
+      "bytes": 697169,
+      "title": "The Review: Superconducting Maglev, May 2017"
+    },
+    {
+      "url": "https://global.jr-central.co.jp/en/company/about_shinkansen/",
+      "status": 200,
+      "sha256": "797497098c4f7517cabbb36b1afc9385bc721cb59b1e7f474292a6d536324206",
+      "bytes": 6438,
+      "title": "About the Shinkansen | Central Japan Railway Company"
+    },
+    {
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rolling-stock/high-speed-and-intercity-trains/velaro.html",
+      "status": 200,
+      "sha256": "8083ab802665cc98129dead53bfac897eac2f89f829ff0bc303a461d66667178",
+      "bytes": 702151,
+      "title": "Velaro - Siemens Mobility Global"
+    }
+  ]
+}

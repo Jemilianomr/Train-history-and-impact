@@ -1,0 +1,304 @@
+{
+  "timestamp": "2026-10-22T04:41:01.932400+00:00",
+  "environment": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "browser": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+    "gpu": "ANGLE / SwiftShader software renderer; not NVIDIA hardware"
+  },
+  "commands": {
+    "clean_install": "npm --cache /workspace/.npm-cache ci",
+    "build": "npm run build",
+    "tests": "npm test",
+    "production_dependency_audit": "npm --cache /workspace/.npm-cache audit --omit=dev"
+  },
+  "build": "passed",
+  "production_known_vulnerabilities": 0,
+  "test_stats": {
+    "startTime": "2026-10-22T04:39:37.438Z",
+    "duration": 73284.972,
+    "expected": 23,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "ocho casos con referencias resolubles y componentes completos",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 68
+        }
+      ]
+    },
+    {
+      "title": "la biela conserva longitud durante una revolución completa",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 166
+        }
+      ]
+    },
+    {
+      "title": "los rodajes visibles conservan el número de ruedas documentado",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 59
+        }
+      ]
+    },
+    {
+      "title": "la colección carga sin errores y funciona la búsqueda y los filtros",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 2649
+        }
+      ]
+    },
+    {
+      "title": "Stephenson’s Rocket: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3608
+        }
+      ]
+    },
+    {
+      "title": "Garratt GL: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3716
+        }
+      ]
+    },
+    {
+      "title": "Union Pacific Big Boy: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3936
+        }
+      ]
+    },
+    {
+      "title": "English Electric Deltic: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3871
+        }
+      ]
+    },
+    {
+      "title": "Shinkansen serie 0: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3970
+        }
+      ]
+    },
+    {
+      "title": "TGV Sud-Est: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3664
+        }
+      ]
+    },
+    {
+      "title": "Velaro E · serie 103: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3600
+        }
+      ]
+    },
+    {
+      "title": "SCMaglev L0: cinco sistemas, desmontaje, aislamiento y fuentes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3673
+        }
+      ]
+    },
+    {
+      "title": "la selección por raycast del modelo actualiza la ficha",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 1898
+        }
+      ]
+    },
+    {
+      "title": "el encuadre inicial y adaptable coincide con restaurar la cámara",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 4675
+        }
+      ]
+    },
+    {
+      "title": "el detalle es accesible por teclado y Escape devuelve el foco",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 2116
+        }
+      ]
+    },
+    {
+      "title": "contexto histórico, comparación y biblioteca conservan el tren activo",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 2746
+        }
+      ]
+    },
+    {
+      "title": "la URL recupera el tren y tolera identificadores desconocidos",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 1824
+        }
+      ]
+    },
+    {
+      "title": "el recorrido avanza y puede detenerse",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 2802
+        }
+      ]
+    },
+    {
+      "title": "movimiento reducido y pausa detienen el dibujo continuo",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 4931
+        }
+      ]
+    },
+    {
+      "title": "pérdida de contexto gráfico: recuperación sin perder las fichas",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 1770
+        }
+      ]
+    },
+    {
+      "title": "cambiar de tren libera geometrías y búferes WebGL anteriores",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 10357
+        }
+      ]
+    },
+    {
+      "title": "auditoría de accesibilidad automática de la vista y el detalle",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 4051
+        }
+      ]
+    },
+    {
+      "title": "pantalla móvil: sin desbordamiento y fichas operables",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 1768
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "index.html": "6a270370d74775b27c13c2112adba45e96ce507a135d68512ae72849a1f67882",
+    "package-lock.json": "fd0bdcbf9714243852460bdc0894d43732d23521f36983ef9cd6ad284e79a7c2",
+    "package.json": "b6bbfae7325c34c0d0ade46df7be37ca8d0f607cc88e387a4cca2ce9ab4bebdf",
+    "playwright.config.ts": "8da79801d8ba222c783426530bd2318c0e6ad9b61cd825f575ce2ef730667d4d",
+    "public/favicon.svg": "9d45819e72ffc666aa434f99cc175201caf35bcc565beb1405e330b94cfd6ca6",
+    "public/licenses/Fraunces-OFL.txt": "cd3384cafac6f2bddc3955273958a2e029f97027c8037ac539ef5744a77b579e",
+    "public/licenses/Lucide-ISC.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "public/licenses/Manrope-OFL.txt": "d826ab6583b12c26807d8716a545bdbbb672df04f48608a364ba9efdbe501c30",
+    "public/licenses/README.md": "880203f690f78b63085acdcc51fb37ab68ed43baa7fe8acc55e005299b42925e",
+    "public/licenses/React-MIT.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "public/licenses/Three-MIT.txt": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "src/App.tsx": "2fb3d29598f297fc25bc29de338d0e5ad4bd14705544e31339b5dbd6096e7f32",
+    "src/components/Mechanism.tsx": "3d6ca37180157531c5f91c5c98bc76c8f741d02f820a67278bc8c0a06c2b12b7",
+    "src/components/Modal.tsx": "197093373fe8f8348ea435d5de5542eb59033055a6527ec9a0393c07cdcbe3f3",
+    "src/components/TrainGlyph.tsx": "2054acbb8d1e70386364e1c3e67ecf8d58bba4459d2161875c4d0cbc12725da1",
+    "src/components/TrainViewer.tsx": "b24a9cbadb337701bb478afee957a526cc8c8e56d71f3e8ec60b94c00d6b8082",
+    "src/data/sources.ts": "7a648bb16630348c7776062d9420e70b4a87297485529257c7809a07a91377ab",
+    "src/data/trains.ts": "145eecbd4eb30c39bae908db5ba112188fabb25f4d8429ac08e5d461feb157e1",
+    "src/main.tsx": "7756163b82f1cef58602fba609b959d5b5b4fa30e02ab5974de70b7c44ae1e16",
+    "src/scene/engine.ts": "7fb90c75269b03c595ce9ac52029dc57de7e641f4e6f0f817b2d80991a9953e4",
+    "src/scene/mechanics.ts": "b6a095b1bec0e0ce0185f1181c230b8da4eeb5a6fbc76ce9f6693dc7d9b3f974",
+    "src/scene/model.ts": "ae49205756e7eafb23a06538687abfe3603de8c00b5b97ba6539009c0fd9fc7a",
+    "src/style.css": "14440faf46b3f52ea0dc3d04aec232cc76ee150b15270b88e0e8ea53445ba2b7",
+    "src/types.ts": "5a903a7c5b7fa9410acc803cb28e83cfaa3566517d7bbdad58910cdc1abfc966",
+    "tests/atlas.spec.ts": "14dd786d8979cbcea1892c4d20fe60dd67aced4ae6790b5a579dec4ac396da36",
+    "tsconfig.json": "a1eec5524c0c79fdf7d703f662fe178bd76024c0f89b74e368567c1602d9f88f",
+    "vite.config.ts": "807f70541b0ad6a330a9d2a6fb8ed8c5ee1560e98ac15cbdf50e72edd5157652"
+  },
+  "bundles": [
+    {
+      "file": "dist/assets/engine-BDoY_8UA.js",
+      "bytes": 585923,
+      "gzip_bytes": 146057
+    },
+    {
+      "file": "dist/assets/index-BHoDEkRF.css",
+      "bytes": 43911,
+      "gzip_bytes": 12078
+    },
+    {
+      "file": "dist/assets/index-PZrXU-t_.js",
+      "bytes": 329795,
+      "gzip_bytes": 102952
+    }
+  ],
+  "scope": "Functional and resource regression checks, not certification of exact train geometry, engineering physics, universal accessibility, or target NVIDIA performance."
+}

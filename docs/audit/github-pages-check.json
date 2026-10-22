@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-10-22T05:07:31.018Z",
+  "build": "npm run build passed",
+  "browser": "154.0.8037.57",
+  "renderer": "SwiftShader software WebGL in cloud",
+  "local_subpath": "/Train-history-and-impact/",
+  "checks": [
+    "8 train entries",
+    "WebGL lazy module loaded",
+    "train query preserved after reload",
+    "mechanism isolation and detail dialog",
+    "home navigation retains repository subpath",
+    "JavaScript, CSS and fonts load under repository subpath",
+    "no browser runtime errors or HTTP errors"
+  ],
+  "result": "passed",
+  "runtime_errors": [],
+  "http_errors": [],
+  "workflow": "YAML and immutable action references validated; GitHub execution not yet verified",
+  "publication": "Not confirmed. Repository Pages settings cannot be queried through the environment GitHub API connection.",
+  "root_regressions": {
+    "command": "npm test -- --grep 'colección carga|URL recupera|pantalla móvil'",
+    "stats": {
+      "startTime": "2026-10-22T05:07:33.004Z",
+      "duration": 9483.737,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "deployment_source_sha256": {
+    "vite.config.ts": "56d92c5053ebab896c5927c5b55ab821e8e19472b5171061a7316a4957dcc73c",
+    ".github/workflows/deploy-pages.yml": "eacde7a85084416484165643efc52ad687dd9de3ea95bb79cc32eb0e59c53773"
+  }
+}
