@@ -51,7 +51,9 @@ El flujo usa Node.js 24, dependencias fijadas y acciones fijadas a commits. El t
 
 - Busca por nombre, país o año y filtra por región o tecnología.
 - Gira y acerca la escena; selecciona un sistema directamente o con sus botones accesibles.
-- Alterna ensamblado, desmontado y aislamiento. Aislar la caldera muestra sus tubos de forma esquemática.
+- Alterna ensamblado, desmontado y aislamiento. Selecciona un sistema y pulsa **Abrir detalle 3D** para examinar su sección funcional con una leyenda de colores.
+- Explora nueve tipos de detalle: caldera, biela–manivela, motor Deltic, generador, motor de tracción, transformador, pantógrafo, bogie y guía maglev. Se distinguen motores CC y asíncronos, pantógrafos de rombo y de un brazo, y bogies de dos o tres ejes.
+- Usa **Estudiar paso a paso**: el deslizador de 0 a 360° pausa el movimiento y sitúa tanto el detalle 3D como el esquema en la fase elegida. Es una revolución ilustrativa, no una medición de velocidad o sincronización real del tren.
 - Abre el mecanismo para estudiar función, materiales, razones de diseño y evolución. La biela–manivela de vapor mantiene el cierre geométrico; no se simula el ciclo termodinámico.
 - Consulta contexto social, compara vehículos y abre referencias de archivo en **Fuentes**.
 - Recorre la cronología automáticamente, pausa el movimiento o cambia su velocidad.
@@ -67,13 +69,13 @@ Three.js utiliza WebGL 2. No se requiere CUDA. En Windows, selecciona tu navegad
 | Equilibrado | 30 fps | 1,25 | 1.024 × 1.024 |
 | Alta calidad | 60 fps | 2 | 2.048 × 2.048 |
 
-Solo permanece cargado el modelo actual. Se liberan geometrías y materiales al cambiar de tren; la escena se detiene al ocultar la pestaña y se dibuja bajo demanda cuando está pausada. Los contadores de geometrías y llamadas de dibujo ayudan a inspeccionar la carga, pero **no miden VRAM**. Los objetivos de fps no son garantías.
+Solo permanece cargado el tren actual. Al abrir una sección se mantiene oculto ese tren y se carga un único detalle; sus recursos se liberan al cerrarlo o sustituirlo. Las piezas estáticas compatibles se agrupan para reducir llamadas de dibujo; tornillería y otros elementos repetidos utilizan instancias. Se liberan geometrías y materiales al cambiar de tren; la escena se detiene al ocultar la pestaña y se dibuja bajo demanda cuando está pausada. Los contadores de geometrías y llamadas de dibujo ayudan a inspeccionar la carga, pero **no miden VRAM**. Los objetivos de fps no son garantías.
 
 La validación de esta entrega se realizó con Chromium y SwiftShader en la nube. No se ha medido el rendimiento, consumo de memoria o temperatura en tu RTX 3060 Laptop de 6 GB y 16 GB de RAM.
 
 ## Investigación y precisión
 
-Consulta [la investigación y sus referencias](docs/INVESTIGACION.md), [la auditoría](docs/AUDITORIA.md) y [el registro de recuperación documental](docs/research-access.json). La biblioteca distingue 17 fuentes consultadas de cuatro libros recomendados cuyo texto completo no se consultó.
+Consulta [la investigación y sus referencias](docs/INVESTIGACION.md), [la auditoría inicial](docs/AUDITORIA.md), [la mejora visual y su auditoría](docs/AUDITORIA_V2.md) y [el registro de recuperación documental](docs/research-access.json). La biblioteca distingue 17 fuentes consultadas de cuatro libros recomendados cuyo texto completo no se consultó.
 
 Los modelos son reconstrucciones didácticas procedurales. Se documentan arquitecturas, disposiciones de ejes y determinadas magnitudes; las formas internas, cotas no verificadas, distribución de equipos y algunos movimientos son esquemáticos. **No son CAD certificados ni planos de fabricación.** Se aportan referencias exactas de archivo cuando se localizaron; no se obtuvieron juegos completos de planos originales de los ocho trenes. Cada ficha explica su alcance y las diferencias entre variantes.
 
