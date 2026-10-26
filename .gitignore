@@ -6,3 +6,4 @@ playwright-report/
 .DS_Store
 .env
 .env.local
+docs/audit/performance/visual/*.png

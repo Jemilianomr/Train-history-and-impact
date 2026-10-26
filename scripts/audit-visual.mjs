@@ -4,7 +4,7 @@ import { existsSync } from "node:fs";
 
 // Run against a production preview: npm run preview -- --port 4173
 // This measures software WebGL in Linux CI, not the user's NVIDIA hardware.
-const output = "docs/audit/v2";
+const output = process.argv[2] || "docs/audit/performance/visual";
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({
   executablePath:
@@ -30,6 +30,12 @@ page.on("console", (message) => {
   if (message.type() === "warning") warnings.push(message.text());
 });
 async function record(train, part = null) {
+  await page.waitForFunction(
+    () =>
+      document
+        .querySelector('[data-testid="viewer"]')
+        ?.getAttribute("aria-busy") !== "true",
+  );
   await page.waitForTimeout(500);
   await page.screenshot({
     path: `${output}/${train}${part ? "-" + part : ""}.png`,

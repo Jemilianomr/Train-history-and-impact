@@ -4,6 +4,7 @@ import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { buildTrain, disposeObject, type TrainModel } from "./model";
 import { buildInspection, type InspectionModel } from "./inspection";
 import { timeAtPhase } from "./mechanics";
+import { inspectionKind } from "../data/inspection";
 import type { PartId, Train, ViewMode } from "../types";
 
 export interface SceneState {
@@ -50,12 +51,15 @@ export class TrainScene {
   private sun: T.DirectionalLight;
   private rendererName = "WebGL 2";
   private contextLost = false;
+  private preparing = false;
+  private preparation = 0;
   constructor(
     private host: HTMLElement,
     state: SceneState,
     private onSelect: (id: PartId) => void,
     private onStats: (stats: SceneStats) => void,
     private onError: (message: string) => void,
+    private onPreparing: (preparing: boolean) => void = () => {},
   ) {
     this.state = state;
     this.renderer = new T.WebGLRenderer({
@@ -69,6 +73,9 @@ export class TrainScene {
     this.renderer.toneMappingExposure = 1.02;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = T.PCFShadowMap;
+    // Camera movement does not change the light-space depth map.
+    this.renderer.shadowMap.autoUpdate = false;
+    this.renderer.shadowMap.needsUpdate = true;
     const studio = new RoomEnvironment(),
       pmrem = new T.PMREMGenerator(this.renderer);
     this.studioMap = pmrem.fromScene(studio, 0.04, 0.1, 100, { size: 128 });
@@ -123,6 +130,8 @@ export class TrainScene {
   private onContextLost = (event: Event) => {
     event.preventDefault();
     this.contextLost = true;
+    this.preparation++;
+    this.onPreparing(false);
     cancelAnimationFrame(this.frame);
     this.frame = 0;
     this.onError(
@@ -141,7 +150,7 @@ export class TrainScene {
       (-(e.clientY - rect.top) / rect.height) * 2 + 1,
     );
     this.ray.setFromCamera(this.pointer, this.camera);
-    if (this.inspection) return;
+    if (this.activeInspection || this.preparing) return;
     const hits = this.ray.intersectObjects(
       Object.values(this.model.parts).filter((p) => p.visible),
       true,
@@ -261,15 +270,23 @@ export class TrainScene {
     c.updateProjectionMatrix();
   }
   update(next: SceneState) {
+    if (this.disposed || this.contextLost) return;
     const first = !this.model,
       changed = first || this.state.train.id !== next.train.id;
     const qualityChanged = first || this.state.quality !== next.quality;
     const oldMode = this.state.mode;
     const oldSelected = this.state.selected;
     const phaseChanged = this.state.seek !== next.seek;
+    const selectionChanged = first || oldSelected !== next.selected;
+    const layoutChanged = changed || oldMode !== next.mode || selectionChanged;
     this.state = next;
     this.metricsPending = true;
     if (changed) {
+      if (this.inspection) {
+        this.scene.remove(this.inspection.root);
+        disposeObject(this.inspection.root);
+        this.inspection = null;
+      }
       if (this.model) {
         this.scene.remove(this.model.root);
         disposeObject(this.model.root);
@@ -289,26 +306,37 @@ export class TrainScene {
       this.sun.shadow.mapSize.set(size, size);
       this.sun.shadow.map?.dispose();
       this.sun.shadow.map = null;
+      this.renderer.shadowMap.needsUpdate = true;
     }
-    if (changed || oldMode !== next.mode || oldSelected !== next.selected) {
+    const kind =
+      next.mode === "isolated"
+        ? inspectionKind(next.train, next.selected)
+        : null;
+    let newInspection = false;
+    // Keep at most one detail for the current train. Switching between exploded
+    // and isolated views reuses its geometry, buffers and compiled materials.
+    if (kind && kind !== this.inspection?.kind && next.selected) {
       if (this.inspection) {
         this.scene.remove(this.inspection.root);
         disposeObject(this.inspection.root);
-        this.inspection = null;
       }
-      if (next.mode === "isolated" && next.selected) {
-        this.inspection = buildInspection(next.train, next.selected);
-        if (this.inspection) this.scene.add(this.inspection.root);
-      }
+      this.inspection = buildInspection(next.train, next.selected);
+      if (this.inspection) this.scene.add(this.inspection.root);
+      newInspection = true;
       this.renderer.renderLists.dispose();
     }
-    this.model.root.visible = !this.inspection;
+    if (this.inspection)
+      this.inspection.root.visible = kind === this.inspection.kind;
+    this.model.root.visible = !this.activeInspection;
     if (changed || phaseChanged) {
       this.elapsed = timeAtPhase(next.phase);
       this.lastTime = 0;
     }
-    this.model.update(this.elapsed);
-    this.inspection?.update(this.elapsed);
+    if (layoutChanged || phaseChanged) {
+      if (this.activeInspection) this.activeInspection.update(this.elapsed);
+      else this.model.update(this.elapsed);
+      this.renderer.shadowMap.needsUpdate = true;
+    }
     const offsets: Record<PartId, T.Vector3> = {
       body: new T.Vector3(0, 4.5, 0),
       power: new T.Vector3(0, 1.6, -2.3),
@@ -316,24 +344,25 @@ export class TrainScene {
       running: new T.Vector3(0, 0, 0),
       supply: new T.Vector3(0, 2.3, 4),
     };
-    for (const [id, g] of Object.entries(this.model.parts)) {
-      g.visible =
-        next.mode !== "isolated" || !next.selected || id === next.selected;
-      g.position.copy(
-        next.mode === "exploded" ? offsets[id as PartId] : new T.Vector3(),
-      );
-      g.traverse((o) => {
-        if (o.userData.cover)
-          o.visible = !(next.mode === "isolated" && id === next.selected);
-        if (o.userData.detail)
-          o.visible = next.mode === "isolated" && id === next.selected;
-        if (o instanceof T.Mesh) {
-          const m = o.material as T.MeshStandardMaterial;
-          m.emissive.set(id === next.selected ? "#9b672e" : "#000000");
-          m.emissiveIntensity = id === next.selected ? 0.14 : 0;
-        }
-      });
-    }
+    if (layoutChanged)
+      for (const [id, g] of Object.entries(this.model.parts)) {
+        g.visible =
+          next.mode !== "isolated" || !next.selected || id === next.selected;
+        g.position.copy(
+          next.mode === "exploded" ? offsets[id as PartId] : new T.Vector3(),
+        );
+        g.traverse((o) => {
+          if (o.userData.cover)
+            o.visible = !(next.mode === "isolated" && id === next.selected);
+          if (o.userData.detail)
+            o.visible = next.mode === "isolated" && id === next.selected;
+          if ((changed || selectionChanged) && o instanceof T.Mesh) {
+            const m = o.material as T.MeshStandardMaterial;
+            m.emissive.set(id === next.selected ? "#9b672e" : "#000000");
+            m.emissiveIntensity = id === next.selected ? 0.14 : 0;
+          }
+        });
+      }
     this.environment.visible = next.mode !== "isolated";
     if (
       changed ||
@@ -341,13 +370,56 @@ export class TrainScene {
       (next.mode === "isolated" && oldSelected !== next.selected)
     )
       this.resetCamera();
+    if (changed || newInspection)
+      this.prepare(
+        newInspection && this.inspection ? this.inspection.root : this.scene,
+      );
     this.invalidate();
+  }
+  private get activeInspection() {
+    return this.inspection?.root.visible ? this.inspection : null;
+  }
+  private prepare(object: T.Object3D) {
+    const version = ++this.preparation;
+    this.preparing = true;
+    cancelAnimationFrame(this.frame);
+    this.frame = 0;
+    this.onPreparing(true);
+    // KHR_parallel_shader_compile lets the browser finish new shaders without
+    // synchronously waiting for them in the first visible draw.
+    // Without the extension, keep Three.js's ordinary first-draw compilation:
+    // compileAsync would only add a timer and a synchronous precompilation pass.
+    const compilation = this.renderer.extensions.has(
+      "KHR_parallel_shader_compile",
+    )
+      ? this.renderer.compileAsync(object, this.camera, this.scene)
+      : Promise.resolve();
+    void compilation
+      .then(() => {
+        if (this.disposed || this.contextLost || version !== this.preparation)
+          return;
+        this.preparing = false;
+        this.lastTime = 0;
+        this.onPreparing(false);
+        this.invalidate();
+      })
+      .catch((error: unknown) => {
+        if (this.disposed || this.contextLost || version !== this.preparation)
+          return;
+        this.preparing = false;
+        this.onPreparing(false);
+        this.onError(
+          error instanceof Error
+            ? error.message
+            : "No se pudo preparar el modelo.",
+        );
+      });
   }
   resetCamera = () => {
     this.model.root.updateMatrixWorld(true);
-    this.inspection?.root.updateMatrixWorld(true);
+    this.activeInspection?.root.updateMatrixWorld(true);
     const obj =
-      this.inspection?.root ??
+      this.activeInspection?.root ??
       (this.state.mode === "isolated" && this.state.selected
         ? this.model.parts[this.state.selected]
         : this.model.root);
@@ -361,7 +433,7 @@ export class TrainScene {
       );
     const center = bounds.getCenter(new T.Vector3());
     const direction = (
-      this.inspection?.kind === "deltic"
+      this.activeInspection?.kind === "deltic"
         ? new T.Vector3(-1, 0.24, 0.38)
         : new T.Vector3(-0.5, 0.39, 0.86)
     ).normalize();
@@ -396,12 +468,13 @@ export class TrainScene {
             depth + Math.abs(c.dot(up)) / tanV,
           );
         }
-    const distance = Math.max(6, dist * (this.inspection ? 1.25 : 1.12));
+    const distance = Math.max(6, dist * (this.activeInspection ? 1.25 : 1.12));
     this.controls.target.copy(center);
     this.camera.position.copy(center).add(direction.multiplyScalar(distance));
     this.controls.minDistance = Math.max(2, distance * 0.13);
     this.controls.maxDistance = distance * 3;
     this.controls.update();
+    this.renderer.shadowMap.needsUpdate = true;
     this.invalidate();
   };
   setSide = () => {
@@ -421,7 +494,8 @@ export class TrainScene {
     this.invalidate();
   };
   private invalidate = () => {
-    if (this.disposed || this.contextLost || document.hidden) return;
+    if (this.disposed || this.contextLost || document.hidden || this.preparing)
+      return;
     // OrbitControls emits further change events while damping. Static edits only
     // need two frames, so pausing does not leave a long queue of expensive draws.
     this.framesLeft = 2;
@@ -429,17 +503,24 @@ export class TrainScene {
   };
   private loop = (now: number) => {
     this.frame = 0;
-    if (this.disposed || this.contextLost || document.hidden) return;
+    if (this.disposed || this.contextLost || document.hidden || this.preparing)
+      return;
     const dt = this.lastTime ? Math.min((now - this.lastTime) / 1000, 0.06) : 0;
     this.lastTime = now;
     const budget = this.state.quality === "high" ? 1000 / 60 : 1000 / 30;
     this.controls.update();
     if (this.state.playing) this.elapsed += dt * this.state.speed;
-    if (now - this.lastRender >= budget - 0.7 || this.framesLeft > 0) {
-      if (this.inspection) this.inspection.update(this.elapsed);
-      else this.model.update(this.elapsed);
+    if (now - this.lastRender >= budget - 0.1) {
+      if (this.state.playing) {
+        if (this.activeInspection) this.activeInspection.update(this.elapsed);
+        else this.model.update(this.elapsed);
+        this.renderer.shadowMap.needsUpdate = true;
+      }
       this.renderer.render(this.scene, this.camera);
-      this.lastRender = now;
+      // Retain the fractional interval on 120/144/165 Hz displays, without
+      // rendering a backlog of missed frames after an expensive operation.
+      this.lastRender =
+        now - (Math.max(0, now - this.lastRender - budget) % budget);
       this.framesLeft = Math.max(0, this.framesLeft - 1);
       this.sampleFrames++;
       if (now - this.sampleTime > 1000 || this.metricsPending) {
@@ -458,12 +539,15 @@ export class TrainScene {
         this.metricsPending = false;
       }
     }
-    if (this.state.playing || this.framesLeft > 0)
+    // controls.update() can emit change -> invalidate() and already schedule
+    // the next frame. Never create a second independent animation chain.
+    if ((this.state.playing || this.framesLeft > 0) && !this.frame)
       this.frame = requestAnimationFrame(this.loop);
-    else this.lastTime = 0;
+    else if (!this.frame) this.lastTime = 0;
   };
   dispose() {
     this.disposed = true;
+    this.preparation++;
     cancelAnimationFrame(this.frame);
     this.resizeObserver.disconnect();
     document.removeEventListener("visibilitychange", this.visibility);

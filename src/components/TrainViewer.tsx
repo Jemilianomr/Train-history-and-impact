@@ -42,8 +42,8 @@ export default function TrainViewer({
             (p) => latest.current.onSelect(p),
             (s) => latest.current.onStats(s),
             setError,
+            setLoading,
           );
-          setLoading(false);
         } catch (e) {
           setError(
             e instanceof Error ? e.message : "No se pudo iniciar WebGL 2.",
@@ -78,6 +78,7 @@ export default function TrainViewer({
       className={`viewer ${guide ? "inspection-view" : ""}`}
       data-testid="viewer"
       data-inspection={kind ?? ""}
+      aria-busy={loading}
     >
       <div className="viewer-grid" />
       <div ref={host} className="canvas-host" data-testid="canvas-host" />

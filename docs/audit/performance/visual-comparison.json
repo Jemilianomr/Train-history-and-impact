@@ -1,0 +1,239 @@
+{
+  "timestamp": "2026-10-26T06:03:41.979336+00:00",
+  "baseline": "docs/audit/v2",
+  "current": "docs/audit/performance/visual",
+  "scope": "Eight trains, twelve detail variants and two mobile views; paused at initial phase. No image editing or resampling.",
+  "tolerance": "At most one level per 8-bit color channel; exact equality is reported separately. Review difference bounds for any nonidentical capture.",
+  "rows": [
+    {
+      "file": "bigboy.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "1026f5bb5725ae06c09fa7c642acd32e46138e01a798fbe0b882daf4cc0cc210",
+      "after_sha256": "1026f5bb5725ae06c09fa7c642acd32e46138e01a798fbe0b882daf4cc0cc210"
+    },
+    {
+      "file": "deltic-drive.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "bb9dc5edb658ae49b5c9a97a6c72b0172da552470a96e4d2498c35290c2903a7",
+      "after_sha256": "bb9dc5edb658ae49b5c9a97a6c72b0172da552470a96e4d2498c35290c2903a7"
+    },
+    {
+      "file": "deltic-power.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "8ef80265aad531f6f610e4f443e05c4951184b05af32dd822b2006e3452e6907",
+      "after_sha256": "8ef80265aad531f6f610e4f443e05c4951184b05af32dd822b2006e3452e6907"
+    },
+    {
+      "file": "deltic-running.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "e5caca4de95869feba1e9e289deff4ffe2fbe8e90c9974c58da260d0a3c37ad9",
+      "after_sha256": "e5caca4de95869feba1e9e289deff4ffe2fbe8e90c9974c58da260d0a3c37ad9"
+    },
+    {
+      "file": "deltic.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "99d89038b31db7a2507e734d1ccb227398f9b80c0299210b5e7d40e6b0ad8d5a",
+      "after_sha256": "99d89038b31db7a2507e734d1ccb227398f9b80c0299210b5e7d40e6b0ad8d5a"
+    },
+    {
+      "file": "garratt.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "f983353a61b887f1187d33913f46f41369d3616d9863f42bff68c775503e8efd",
+      "after_sha256": "f983353a61b887f1187d33913f46f41369d3616d9863f42bff68c775503e8efd"
+    },
+    {
+      "file": "maglev-power.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "aa7e25b95f6f44b8e120a31100303c55dbbd3aeb6db034f2fa5353da2790c31a",
+      "after_sha256": "aa7e25b95f6f44b8e120a31100303c55dbbd3aeb6db034f2fa5353da2790c31a"
+    },
+    {
+      "file": "maglev.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "85fe879fc14f7cc6cf3d622784d38595498119231c273e3cbbd2f2cca3ff0b44",
+      "after_sha256": "85fe879fc14f7cc6cf3d622784d38595498119231c273e3cbbd2f2cca3ff0b44"
+    },
+    {
+      "file": "mobile-controls.png",
+      "equal_pixels": false,
+      "mean_absolute_channel_error": 0.00010329323125531656,
+      "max_channel_error": 1,
+      "difference_bounds": [
+        36,
+        698,
+        353,
+        807
+      ],
+      "within_one_channel_level": true,
+      "before_sha256": "40307f52fc58693f4d4a1d06c83566fe85d88f5563716640ef78e87b088bb9fc",
+      "after_sha256": "f9d9d38df99d0691bcdf4e6af6d18255c2132a5eb8f7790fc86115549c63d5a3"
+    },
+    {
+      "file": "mobile-viewer.png",
+      "equal_pixels": false,
+      "mean_absolute_channel_error": 5.2659294365455505e-05,
+      "max_channel_error": 1,
+      "difference_bounds": [
+        27,
+        754,
+        334,
+        779
+      ],
+      "within_one_channel_level": true,
+      "before_sha256": "83f5d1a18432594e68f6d3023983386e4f25b4be77b1274f9729df89b61027c5",
+      "after_sha256": "093d23fc0d15d56100f589b9b8fc6213fe1470cc44df16ced43b31c3e865df03"
+    },
+    {
+      "file": "rocket-drive.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "ef38d7ab74170152d8f79fdd5cb5591cdaa87ac097c61ca14a198b875c37e9cb",
+      "after_sha256": "ef38d7ab74170152d8f79fdd5cb5591cdaa87ac097c61ca14a198b875c37e9cb"
+    },
+    {
+      "file": "rocket-power.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "49217c1080c7caa3ba105ed15670181e3194e81414f837f22058c0561b7253bc",
+      "after_sha256": "49217c1080c7caa3ba105ed15670181e3194e81414f837f22058c0561b7253bc"
+    },
+    {
+      "file": "rocket.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "56c18ae5709f6be797b9332a019d8053dbad72996b4ebb784e5deba3b1d772fc",
+      "after_sha256": "56c18ae5709f6be797b9332a019d8053dbad72996b4ebb784e5deba3b1d772fc"
+    },
+    {
+      "file": "shinkansen-supply.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "2c99817b93c0ee6240ae2b4a0321eee4a5f424316134e1390fe8bfe87dfab7e7",
+      "after_sha256": "2c99817b93c0ee6240ae2b4a0321eee4a5f424316134e1390fe8bfe87dfab7e7"
+    },
+    {
+      "file": "shinkansen.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "ef56f6fc541734d2d93ccb9a5cd885e2d75243c5c7aaf9ec601f22f70cdf2aa4",
+      "after_sha256": "ef56f6fc541734d2d93ccb9a5cd885e2d75243c5c7aaf9ec601f22f70cdf2aa4"
+    },
+    {
+      "file": "tgv-running.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "306778a579da208cf3377988564c0128b05f86c1e22ca37527af72628a54f571",
+      "after_sha256": "306778a579da208cf3377988564c0128b05f86c1e22ca37527af72628a54f571"
+    },
+    {
+      "file": "tgv.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "a30d1c18b098f86033481f86c803a10e6caf8f902aa9bb9fe56eb7e783a516a6",
+      "after_sha256": "a30d1c18b098f86033481f86c803a10e6caf8f902aa9bb9fe56eb7e783a516a6"
+    },
+    {
+      "file": "velaro-drive.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "2bbc01c74d3cbb869eef9e4e9cec0c60494c6437f8c5fa966f0ceac638381510",
+      "after_sha256": "2bbc01c74d3cbb869eef9e4e9cec0c60494c6437f8c5fa966f0ceac638381510"
+    },
+    {
+      "file": "velaro-power.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "88731652ac8b7aba29bb535d830042d8b3275f195bea25ec3efa9a292de1c756",
+      "after_sha256": "88731652ac8b7aba29bb535d830042d8b3275f195bea25ec3efa9a292de1c756"
+    },
+    {
+      "file": "velaro-running.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "913d93b8f355d754c792a835042203ae02ba8c3ed6dd48ba6d3ad31f347ae0bc",
+      "after_sha256": "913d93b8f355d754c792a835042203ae02ba8c3ed6dd48ba6d3ad31f347ae0bc"
+    },
+    {
+      "file": "velaro-supply.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "ffb8e540107a3ef50b3092598f2d56bcebc3c02a9eba93e8d8161f5bba075d73",
+      "after_sha256": "ffb8e540107a3ef50b3092598f2d56bcebc3c02a9eba93e8d8161f5bba075d73"
+    },
+    {
+      "file": "velaro.png",
+      "equal_pixels": true,
+      "mean_absolute_channel_error": 0.0,
+      "max_channel_error": 0,
+      "difference_bounds": null,
+      "within_one_channel_level": true,
+      "before_sha256": "2e0daf547688e7c65367b51ea85bc513aa9ee196911ac7df525a4bcef6c29039",
+      "after_sha256": "2e0daf547688e7c65367b51ea85bc513aa9ee196911ac7df525a4bcef6c29039"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "timestamp": "2026-10-26T06:00:30.411Z",
+  "browser": "154.0.8037.57",
+  "viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "quality": "balanced",
+  "sample": "Paused production scenes. Render counters include shadow passes. FPS and VRAM are not benchmarked. SwiftShader software rendering, not RTX 3060.",
+  "rows": [
+    {
+      "train": "rocket",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "21.734",
+      "Llamadas de dibujo": "97",
+      "Geometrías en memoria": "97",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "garratt",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    },
+    {
+      "train": "bigboy",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    },
+    {
+      "train": "deltic",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "87.714",
+      "Llamadas de dibujo": "267",
+      "Geometrías en memoria": "138",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "shinkansen",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    },
+    {
+      "train": "tgv",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    },
+    {
+      "train": "velaro",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "79.450",
+      "Llamadas de dibujo": "149",
+      "Geometrías en memoria": "79",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "maglev",
+      "part": null,
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "85.834",
+      "Llamadas de dibujo": "72",
+      "Geometrías en memoria": "38",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "rocket",
+      "part": "power",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    },
+    {
+      "train": "rocket",
+      "part": "drive",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "14.320",
+      "Llamadas de dibujo": "48",
+      "Geometrías en memoria": "105",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "deltic",
+      "part": "power",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    },
+    {
+      "train": "deltic",
+      "part": "drive",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "21.608",
+      "Llamadas de dibujo": "90",
+      "Geometrías en memoria": "144",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "deltic",
+      "part": "running",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "50.096",
+      "Llamadas de dibujo": "104",
+      "Geometrías en memoria": "146",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "shinkansen",
+      "part": "supply",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    },
+    {
+      "train": "tgv",
+      "part": "running",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "40.784",
+      "Llamadas de dibujo": "84",
+      "Geometrías en memoria": "110",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "velaro",
+      "part": "drive",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "velaro",
+      "part": "power",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "74.028",
+      "Llamadas de dibujo": "164",
+      "Geometrías en memoria": "90",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "velaro",
+      "part": "supply",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "91.728",
+      "Llamadas de dibujo": "244",
+      "Geometrías en memoria": "85",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "velaro",
+      "part": "running",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "29.000",
+      "Llamadas de dibujo": "58",
+      "Geometrías en memoria": "84",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "train": "maglev",
+      "part": "power",
+      "Fotogramas por segundo": "Animación pausada",
+      "Triángulos por fotograma": "—",
+      "Llamadas de dibujo": "—",
+      "Geometrías en memoria": "—",
+      "renderer": "Esperando información del visor"
+    }
+  ],
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "horizontalOverflow": false
+  },
+  "errors": [],
+  "warnings": []
+}

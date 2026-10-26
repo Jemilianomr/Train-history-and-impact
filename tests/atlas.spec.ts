@@ -86,18 +86,34 @@ test('la selección por raycast del modelo actualiza la ficha', async ({page}) =
 });
 
 test('el encuadre inicial y adaptable coincide con restaurar la cámara', async ({page}) => {
-  // Read the camera matrices actually submitted to WebGL. Comparing PNG bytes
-  // would also compare unrelated rasterization and overlay differences.
+  // Capture the uniforms used by a draw to the main framebuffer. The last
+  // uniform upload alone may belong to the shadow camera when Three.js reuses
+  // unchanged uniforms for the visible camera.
   await page.addInitScript(()=>{
     (window as any).__cameraMatrices={};
-    const names=new WeakMap<WebGLUniformLocation,string>();
+    const names=new WeakMap<WebGLUniformLocation,{program:WebGLProgram,name:string}>();
+    const matrices=new WeakMap<WebGLProgram,Record<string,number[]>>();
+    let currentProgram:WebGLProgram|null=null,framebuffer:WebGLFramebuffer|null=null;
     const proto=WebGL2RenderingContext.prototype,locate=proto.getUniformLocation,upload=proto.uniformMatrix4fv;
-    proto.getUniformLocation=function(program,name){const loc=locate.call(this,program,name);if(loc)names.set(loc,name);return loc;};
+    const use=proto.useProgram,bind=proto.bindFramebuffer;
+    proto.useProgram=function(program){currentProgram=program;return use.call(this,program);};
+    proto.bindFramebuffer=function(target,buffer){if(target===this.FRAMEBUFFER||target===this.DRAW_FRAMEBUFFER)framebuffer=buffer;return bind.call(this,target,buffer);};
+    proto.getUniformLocation=function(program,name){const loc=locate.call(this,program,name);if(loc)names.set(loc,{program,name});return loc;};
     proto.uniformMatrix4fv=function(location,transpose,data,...rest){
-      const name=location&&names.get(location);
-      if(name==='viewMatrix'||name==='projectionMatrix')(window as any).__cameraMatrices[name]=Array.from(data);
+      const info=location&&names.get(location);
+      if(info&&(info.name==='viewMatrix'||info.name==='projectionMatrix')){
+        const value=matrices.get(info.program)??{};value[info.name]=Array.from(data);matrices.set(info.program,value);
+      }
       return upload.call(this,location,transpose,data,...rest);
     };
+    for(const name of ['drawElements','drawArrays','drawElementsInstanced','drawArraysInstanced']){
+      const original=(proto as any)[name];
+      (proto as any)[name]=function(...args:any[]){
+        const value=currentProgram&&matrices.get(currentProgram);
+        if(!framebuffer&&value?.viewMatrix&&value.projectionMatrix)(window as any).__cameraMatrices={...value};
+        return original.apply(this,args);
+      };
+    }
   });
   await page.goto('/?tren=bigboy');
   await expect(page.locator('canvas')).toHaveCount(1);
@@ -105,6 +121,7 @@ test('el encuadre inicial y adaptable coincide con restaurar la cámara', async 
     await page.setViewportSize(viewport);await page.waitForTimeout(1000);
     const initial=await page.evaluate(()=>(window as any).__cameraMatrices);
     expect(initial.viewMatrix).toHaveLength(16);expect(initial.projectionMatrix).toHaveLength(16);
+    expect(initial.projectionMatrix[11]).toBe(-1);expect(initial.projectionMatrix[15]).toBe(0);
     await page.getByRole('button',{name:'Restaurar cámara',exact:true}).click();
     await page.waitForTimeout(500);
     const restored=await page.evaluate(()=>(window as any).__cameraMatrices);

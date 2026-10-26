@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -116,6 +116,17 @@ export default function App() {
     [compareId, setCompareId] = useState("shinkansen");
   const [stats, setStats] = useState<SceneStats | null>(null),
     [libraryAll, setLibraryAll] = useState(false);
+  const latestStats = useRef<SceneStats | null>(null);
+  const currentModal = useRef(modal);
+  currentModal.current = modal;
+  const reportStats = useCallback((value: SceneStats) => {
+    latestStats.current = value;
+    // Telemetry must not redraw the entire interface every second while studying.
+    if (currentModal.current === "settings") setStats(value);
+  }, []);
+  useEffect(() => {
+    if (modal === "settings") setStats(latestStats.current);
+  }, [modal]);
   const part = train.parts.find((p) => p.id === selected) ?? null;
   const filtered = useMemo(
     () =>
@@ -137,7 +148,10 @@ export default function App() {
     setTrain(t);
     setSelected(null);
     setMode("assembled");
-    if (t.id !== train.id) setStats(null);
+    if (t.id !== train.id) {
+      latestStats.current = null;
+      setStats(null);
+    }
     setPhase(0);
     const u = new URL(window.location.href);
     u.searchParams.set("tren", t.id);
@@ -396,7 +410,7 @@ export default function App() {
             <TrainViewer
               state={sceneState}
               onSelect={selectPart}
-              onStats={setStats}
+              onStats={reportStats}
             />
             <div className="viewer-toolbar">
               <div

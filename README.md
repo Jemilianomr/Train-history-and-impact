@@ -8,15 +8,19 @@ Requiere Node.js 22.12 o posterior; comprobado con Node 24.19 y npm 11.9.
 
 ```bash
 npm ci
-npm run dev
-```
-
-Abre la dirección que indique Vite en tu navegador. El servidor de desarrollo escucha en el puerto 5173 y en todas las interfaces. En el entorno de trabajo, si la caché predeterminada de npm no es escribible, usa `npm --cache /workspace/.npm-cache ci`.
-
-```bash
 npm run build
 npm run preview -- --port 4173
 ```
+
+Para estudiar los trenes en tu equipo, usa esta compilación de producción y abre la dirección que indique la terminal. Las siguientes veces basta con ejecutar `npm run preview`; vuelve a compilar después de actualizar el código. En Windows PowerShell puedes escribir `npm.cmd` en lugar de `npm`.
+
+Para modificar el código con recarga automática:
+
+```bash
+npm run dev
+```
+
+El servidor de desarrollo escucha en el puerto 5173 y en todas las interfaces. En el entorno de trabajo, si la caché predeterminada de npm no es escribible, usa `npm --cache /workspace/.npm-cache ci`.
 
 La compilación genera `dist/`, publicable en un alojamiento estático. La aplicación no necesita servidor de datos, credenciales ni servicios de pago. Tipografías, iconos y geometrías se sirven localmente; los enlaces bibliográficos abren las instituciones externas.
 
@@ -69,7 +73,9 @@ Three.js utiliza WebGL 2. No se requiere CUDA. En Windows, selecciona tu navegad
 | Equilibrado | 30 fps | 1,25 | 1.024 × 1.024 |
 | Alta calidad | 60 fps | 2 | 2.048 × 2.048 |
 
-Solo permanece cargado el tren actual. Al abrir una sección se mantiene oculto ese tren y se carga un único detalle; sus recursos se liberan al cerrarlo o sustituirlo. Las piezas estáticas compatibles se agrupan para reducir llamadas de dibujo; tornillería y otros elementos repetidos utilizan instancias. Se liberan geometrías y materiales al cambiar de tren; la escena se detiene al ocultar la pestaña y se dibuja bajo demanda cuando está pausada. Los contadores de geometrías y llamadas de dibujo ayudan a inspeccionar la carga, pero **no miden VRAM**. Los objetivos de fps no son garantías.
+Solo permanece cargado el tren actual y, como máximo, un detalle. Este detalle se conserva oculto al regresar al conjunto o al despiece para reutilizarlo sin reconstrucción ni nuevas cargas de búferes; se libera al sustituirlo por otro o cambiar de tren. Las piezas estáticas compatibles se agrupan para reducir llamadas de dibujo; tornillería y otros elementos repetidos utilizan instancias. Se liberan geometrías y materiales al cambiar de tren; la escena se detiene al ocultar la pestaña y se dibuja bajo demanda cuando está pausada. Los contadores de geometrías y llamadas de dibujo ayudan a inspeccionar la carga, pero **no miden VRAM**. Los objetivos de fps no son garantías.
+
+La [auditoría de rendimiento](docs/RENDIMIENTO.md) documenta la corrección de ciclos de animación duplicados durante el movimiento de cámara, el límite de fotogramas en pantallas de alta frecuencia, la preparación asíncrona de shaders y la reutilización de sombras en pausa. Esta optimización mantiene las geometrías, piezas, cinemática y perfiles de calidad de la revisión visual.
 
 La validación de esta entrega se realizó con Chromium y SwiftShader en la nube. No se ha medido el rendimiento, consumo de memoria o temperatura en tu RTX 3060 Laptop de 6 GB y 16 GB de RAM.
 

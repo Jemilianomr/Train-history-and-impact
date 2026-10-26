@@ -1,0 +1,73 @@
+{
+  "timestamp": "2026-10-26T05:59:54.228Z",
+  "browser": "154.0.8037.57",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "profile": "high",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "note": "Instrumented SwiftShader run; software timings do not represent the RTX 3060. RAF count tracks engine callbacks only.",
+  "maxPending": 1,
+  "callbacks": 75,
+  "longTasks": [
+    {
+      "start": 350,
+      "duration": 1453
+    },
+    {
+      "start": 1804,
+      "duration": 224
+    },
+    {
+      "start": 3578,
+      "duration": 168
+    },
+    {
+      "start": 6447,
+      "duration": 114
+    },
+    {
+      "start": 6561,
+      "duration": 262
+    },
+    {
+      "start": 7815,
+      "duration": 765
+    },
+    {
+      "start": 9289,
+      "duration": 80
+    },
+    {
+      "start": 9493,
+      "duration": 293
+    },
+    {
+      "start": 11655,
+      "duration": 137
+    },
+    {
+      "start": 11865,
+      "duration": 613
+    }
+  ],
+  "draws": 12549,
+  "bufferBytes": 9150024,
+  "programs": 25,
+  "rows": [
+    {
+      "train": "bigboy",
+      "interactionMs": 2751
+    },
+    {
+      "train": "deltic",
+      "interactionMs": 2355
+    },
+    {
+      "train": "velaro",
+      "interactionMs": 2374
+    }
+  ],
+  "errors": []
+}
